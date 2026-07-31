@@ -1,0 +1,197 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+
+    background:#0f172a;
+
+    color:white;
+
+    font-family:'Poppins',sans-serif;
+
+}
+
+.navbar{
+
+    padding:25px 0;
+
+}
+
+.navbar-brand{
+
+    font-size:30px;
+
+    font-weight:700;
+
+}
+
+.hero{
+
+    min-height:90vh;
+
+    display:flex;
+
+    align-items:center;
+
+}
+
+.hero h1{
+
+    font-size:55px;
+
+    font-weight:700;
+
+}
+
+.hero p{
+
+    color:#94a3b8;
+
+    margin-top:20px;
+
+    line-height:1.8;
+
+}
+
+.card-box{
+
+    background:#1e293b;
+
+    border-radius:20px;
+
+    padding:30px;
+
+    box-shadow:0 15px 40px rgba(0,0,0,.25);
+
+    border:1px solid #334155;
+
+}
+
+.upload-box{
+
+    margin-top:20px;
+
+    border:2px dashed #475569;
+
+    border-radius:15px;
+
+    padding:40px;
+
+    text-align:center;
+
+    transition:.3s;
+
+    cursor:pointer;
+
+}
+
+.upload-box:hover{
+
+    border-color:#2563eb;
+
+    background:#172554;
+
+}
+
+textarea{
+
+    background:#0f172a !important;
+
+    border:none !important;
+
+    color:white !important;
+
+}
+
+.form-control{
+
+    background:#0f172a;
+
+    color:white;
+
+}
+
+.form-control::placeholder{
+
+    color:#94a3b8;
+
+}
+
+.btn-primary{
+
+    background:#2563eb;
+
+    border:none;
+
+    padding:14px 35px;
+
+    border-radius:12px;
+
+}
+
+.btn-primary:hover{
+
+    background:#1d4ed8;
+
+}
+
+.feature{
+
+    background:#1e293b;
+
+    border-radius:15px;
+
+    padding:25px;
+
+    text-align:center;
+
+    margin-top:30px;
+
+}
+
+.feature i{
+
+    font-size:45px;
+
+    color:#3b82f6;
+
+}
+
+.feature h5{
+
+    margin-top:20px;
+
+}
+
+.feature p{
+
+    color:#94a3b8;
+
+}
+.upload-box{
+    width:100%;
+    min-height:220px;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+}
+
+.upload-box h5{
+    margin-top:15px;
+}
+
+.upload-box:hover{
+    transform:translateY(-3px);
+}
+
+#jobFileName,
+#resumeFileName{
+    margin-top:15px;
+    color:#60a5fa;
+    font-weight:600;
+    word-break:break-word;
+}

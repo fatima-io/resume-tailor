@@ -1,0 +1,12 @@
+customtkinter
+tkinterdnd2
+openai
+python-dotenv
+pdfplumber
+python-docx
+Pillow
+easyocr
+pymupdf
+reportlab
+opencv-python
+numpy

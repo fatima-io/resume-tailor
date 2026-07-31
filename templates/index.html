@@ -1,0 +1,253 @@
+{% extends "layout.html" %}
+
+{% block title %}AI Resume Tailor{% endblock %}
+
+{% block content %}
+
+
+<nav class="navbar navbar-expand-lg navbar-dark">
+    <div class="container">
+        <a class="navbar-brand" href="#">
+            AI Resume Tailor
+        </a>
+    </div>
+</nav>
+
+<section class="hero">
+
+    <div class="container">
+
+        <div class="row align-items-center">
+
+            <div class="col-lg-6">
+
+                <h1>
+                    Build ATS-Friendly Resumes with AI
+                </h1>
+
+                <p>
+
+                    Upload your existing resume and the job description.
+                    Our AI analyzes both and generates a professional
+                    ATS-optimized resume in seconds.
+
+                </p>
+
+                <button class="btn btn-primary mt-4">
+
+                    Get Started
+
+                </button>
+
+            </div>
+
+            <div class="col-lg-6">
+
+                <div class="card-box">
+
+                    <h3 class="mb-4">
+                        Generate Resume
+                    </h3>
+
+                    <form action="/generate" method="POST" enctype="multipart/form-data">
+
+                        <!--JOB DESCRIPTION -->
+
+                        <h5>
+                            Job Description
+                        </h5>
+
+                        <div class="mb-3">
+
+                            <input type="radio" name="job_method" value="paste" checked>
+
+                            Paste Text
+
+                            <input class="ms-4" type="radio" name="job_method" value="pdf">
+
+                            PDF
+
+                            <input class="ms-4" type="radio" name="job_method" value="docx">
+
+                            DOCX
+
+                        </div>
+
+                        <div id="jobPaste">
+
+                            <textarea class="form-control" rows="8" name="job_description"
+                                placeholder="Paste Job Description Here..."></textarea>
+
+                        </div>
+
+                        <div id="jobFile" style="display:none;">
+
+                            <label class="upload-box">
+
+                                <i class="bi bi-file-earmark-arrow-up fs-1"></i>
+
+                                <h5 class="mt-3">Drop PDF or DOCX Here</h5>
+
+                                <p class="text-secondary">
+                                    or click to browse
+                                </p>
+
+                                <input id="jobUpload" type="file" name="job_file" accept=".pdf,.docx" hidden>
+
+                                <div id="jobFileName"></div>
+
+                            </label>
+
+                        </div>
+
+                        <hr class="my-5">
+
+                        <!-- RESUME -->
+
+                        <h5>
+
+                            Resume
+
+                        </h5>
+
+                        <div class="mb-3">
+
+                            <input type="radio" name="resume_method" value="paste" checked>
+
+                            Paste Text
+
+                            <input class="ms-4" type="radio" name="resume_method" value="pdf">
+
+                            PDF
+
+                            <input class="ms-4" type="radio" name="resume_method" value="image">
+
+                            Image
+
+                        </div>
+
+                        <div id="resumePaste">
+
+                            <textarea class="form-control" rows="8" name="resume_text"
+                                placeholder="Paste Resume Here..."></textarea>
+
+                        </div>
+
+                        <div id="resumeFile" style="display:none;">
+
+                            <div class="upload-box">
+
+                                <div id="resumeFile" style="display:none;">
+
+                                    <label class="upload-box">
+
+                                        <i class="bi bi-cloud-arrow-up fs-1"></i>
+
+                                        <h5 class="mt-3">Drop Resume Here</h5>
+
+                                        <p class="text-secondary">
+                                            PDF or Image
+                                        </p>
+
+                                        <input id="resumeUpload" type="file" name="resume_file"
+                                            accept=".pdf,.png,.jpg,.jpeg" hidden>
+
+                                        <div id="resumeFileName"></div>
+
+                                    </label>
+
+                                </div>
+
+                                <div class="text-center">
+
+                                    <button class="btn btn-primary mt-5">
+
+                                        Generate Resume
+
+                                    </button>
+
+                                </div>
+
+                    </form>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="row">
+
+            <div class="col-md-4">
+
+                <div class="feature">
+
+                    <i class="bi bi-bar-chart-line-fill"></i>
+
+                    <h5>
+
+                        ATS Score
+
+                    </h5>
+
+                    <p>
+
+                        Analyze your resume against the job description.
+
+                    </p>
+
+                </div>
+
+            </div>
+
+            <div class="col-md-4">
+
+                <div class="feature">
+
+                    <i class="bi bi-search"></i>
+
+                    <h5>
+
+                        Keyword Match
+
+                    </h5>
+
+                    <p>
+
+                        Find missing skills and keywords instantly.
+
+                    </p>
+
+                </div>
+
+            </div>
+
+            <div class="col-md-4">
+
+                <div class="feature">
+
+                    <i class="bi bi-file-earmark-arrow-down-fill"></i>
+
+                    <h5>
+
+                        Export Resume
+
+                    </h5>
+
+                    <p>
+
+                        Download the generated resume as PDF or DOCX.
+
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+{% endblock %}
