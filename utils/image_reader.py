@@ -1,9 +1,9 @@
 import easyocr
 import tempfile
 
-reader = easyocr.Reader(["en"])
-
 def read_image(file):
+
+    reader = easyocr.Reader(["en"])
 
     with tempfile.NamedTemporaryFile(delete=False, suffix=".png") as temp:
         file.save(temp.name)

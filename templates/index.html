@@ -4,78 +4,65 @@
 
 {% block content %}
 
-
 <nav class="navbar navbar-expand-lg navbar-dark">
     <div class="container">
-        <a class="navbar-brand" href="#">
-            AI Resume Tailor
-        </a>
+        <a class="navbar-brand" href="#">AI Resume Tailor</a>
     </div>
 </nav>
 
-<section class="hero">
+<section class="hero py-5">
 
     <div class="container">
 
         <div class="row align-items-center">
 
-            <div class="col-lg-6">
+            <!-- LEFT SIDE -->
+            <div class="col-lg-6 mb-5">
 
-                <h1>
-                    Build ATS-Friendly Resumes with AI
-                </h1>
+                <h1>Build ATS-Friendly Resumes with AI</h1>
 
-                <p>
-
-                    Upload your existing resume and the job description.
-                    Our AI analyzes both and generates a professional
+                <p class="mt-3">
+                    Upload your resume and the job description.
+                    Our AI compares both documents and generates an
                     ATS-optimized resume in seconds.
-
                 </p>
-
-                <button class="btn btn-primary mt-4">
-
-                    Get Started
-
-                </button>
 
             </div>
 
+            <!-- RIGHT SIDE -->
             <div class="col-lg-6">
 
-                <div class="card-box">
+                <div class="card-box p-4">
 
-                    <h3 class="mb-4">
+                    <h3 class="mb-4 text-center">
                         Generate Resume
                     </h3>
 
                     <form action="/generate" method="POST" enctype="multipart/form-data">
 
-                        <!--JOB DESCRIPTION -->
+                        <!-- JOB DESCRIPTION -->
 
-                        <h5>
-                            Job Description
-                        </h5>
+                        <h5>Job Description</h5>
 
                         <div class="mb-3">
 
                             <input type="radio" name="job_method" value="paste" checked>
-
                             Paste Text
 
-                            <input class="ms-4" type="radio" name="job_method" value="pdf">
-
+                            <input class="ms-3" type="radio" name="job_method" value="pdf">
                             PDF
 
-                            <input class="ms-4" type="radio" name="job_method" value="docx">
-
+                            <input class="ms-3" type="radio" name="job_method" value="docx">
                             DOCX
 
                         </div>
 
                         <div id="jobPaste">
 
-                            <textarea class="form-control" rows="8" name="job_description"
+                            <textarea
+                                class="form-control"
+                                rows="8"
+                                name="job_description"
                                 placeholder="Paste Job Description Here..."></textarea>
 
                         </div>
@@ -86,13 +73,16 @@
 
                                 <i class="bi bi-file-earmark-arrow-up fs-1"></i>
 
-                                <h5 class="mt-3">Drop PDF or DOCX Here</h5>
+                                <h5 class="mt-3">
+                                    Upload PDF or DOCX
+                                </h5>
 
-                                <p class="text-secondary">
-                                    or click to browse
-                                </p>
-
-                                <input id="jobUpload" type="file" name="job_file" accept=".pdf,.docx" hidden>
+                                <input
+                                    id="jobUpload"
+                                    type="file"
+                                    name="job_file"
+                                    accept=".pdf,.docx"
+                                    hidden>
 
                                 <div id="jobFileName"></div>
 
@@ -100,73 +90,71 @@
 
                         </div>
 
-                        <hr class="my-5">
+                        <hr class="my-4">
 
                         <!-- RESUME -->
 
-                        <h5>
-
-                            Resume
-
-                        </h5>
+                        <h5>Resume</h5>
 
                         <div class="mb-3">
 
                             <input type="radio" name="resume_method" value="paste" checked>
-
                             Paste Text
 
-                            <input class="ms-4" type="radio" name="resume_method" value="pdf">
-
+                            <input class="ms-3" type="radio" name="resume_method" value="pdf">
                             PDF
 
-                            <input class="ms-4" type="radio" name="resume_method" value="image">
-
+                            <input class="ms-3" type="radio" name="resume_method" value="image">
                             Image
 
                         </div>
 
                         <div id="resumePaste">
 
-                            <textarea class="form-control" rows="8" name="resume_text"
+                            <textarea
+                                class="form-control"
+                                rows="8"
+                                name="resume_text"
                                 placeholder="Paste Resume Here..."></textarea>
 
                         </div>
 
                         <div id="resumeFile" style="display:none;">
 
-                            <div class="upload-box">
+                            <label class="upload-box">
 
-                                <div id="resumeFile" style="display:none;">
+                                <i class="bi bi-cloud-arrow-up fs-1"></i>
 
-                                    <label class="upload-box">
+                                <h5 class="mt-3">
+                                    Upload Resume
+                                </h5>
 
-                                        <i class="bi bi-cloud-arrow-up fs-1"></i>
+                                <p>PDF / JPG / PNG</p>
 
-                                        <h5 class="mt-3">Drop Resume Here</h5>
+                                <input
+                                    id="resumeUpload"
+                                    type="file"
+                                    name="resume_file"
+                                    accept=".pdf,.png,.jpg,.jpeg"
+                                    hidden>
 
-                                        <p class="text-secondary">
-                                            PDF or Image
-                                        </p>
+                                <div id="resumeFileName"></div>
 
-                                        <input id="resumeUpload" type="file" name="resume_file"
-                                            accept=".pdf,.png,.jpg,.jpeg" hidden>
+                            </label>
 
-                                        <div id="resumeFileName"></div>
+                        </div>
 
-                                    </label>
+                        <div class="text-center mt-4">
 
-                                </div>
+                            <button
+                                type="submit"
+                                class="btn btn-primary btn-lg">
 
-                                <div class="text-center">
+                                Get Started
 
-                                    <button class="btn btn-primary mt-5">
+                            </button>
 
-                                        Generate Resume
-
-                                    </button>
-
-                                </div>
+                        </div>
 
                     </form>
 
@@ -176,25 +164,17 @@
 
         </div>
 
-        <div class="row">
+        <div class="row mt-5">
 
             <div class="col-md-4">
 
-                <div class="feature">
+                <div class="feature text-center">
 
-                    <i class="bi bi-bar-chart-line-fill"></i>
+                    <i class="bi bi-bar-chart-line-fill fs-1"></i>
 
-                    <h5>
+                    <h5 class="mt-3">ATS Score</h5>
 
-                        ATS Score
-
-                    </h5>
-
-                    <p>
-
-                        Analyze your resume against the job description.
-
-                    </p>
+                    <p>Analyze your resume against the job description.</p>
 
                 </div>
 
@@ -202,21 +182,13 @@
 
             <div class="col-md-4">
 
-                <div class="feature">
+                <div class="feature text-center">
 
-                    <i class="bi bi-search"></i>
+                    <i class="bi bi-search fs-1"></i>
 
-                    <h5>
+                    <h5 class="mt-3">Keyword Match</h5>
 
-                        Keyword Match
-
-                    </h5>
-
-                    <p>
-
-                        Find missing skills and keywords instantly.
-
-                    </p>
+                    <p>Find missing skills and keywords instantly.</p>
 
                 </div>
 
@@ -224,21 +196,13 @@
 
             <div class="col-md-4">
 
-                <div class="feature">
+                <div class="feature text-center">
 
-                    <i class="bi bi-file-earmark-arrow-down-fill"></i>
+                    <i class="bi bi-file-earmark-arrow-down-fill fs-1"></i>
 
-                    <h5>
+                    <h5 class="mt-3">Export Resume</h5>
 
-                        Export Resume
-
-                    </h5>
-
-                    <p>
-
-                        Download the generated resume as PDF or DOCX.
-
-                    </p>
+                    <p>Download the generated resume as PDF or DOCX.</p>
 
                 </div>
 
