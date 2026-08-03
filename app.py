@@ -1,9 +1,15 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, send_file
 from utils.file_parser import parse_uploaded_file
 from ai.analyzer import analyze_resume
 from ai.resume_writer import generate_resume
+from exporters.docx_export import create_docx
+
+import tempfile
 
 app = Flask(__name__)
+
+# Storing the latest generated resume
+latest_resume = ""
 
 
 @app.route("/")
@@ -14,6 +20,7 @@ def home():
 @app.route("/generate", methods=["POST"])
 def generate():
 
+    global latest_resume
 
     # Job Description
 
@@ -36,27 +43,33 @@ def generate():
 
 
     # AI Analysis
-
-    analysis = analyze_resume(
-        job_description,
-        resume_text
-    )
+    analysis = analyze_resume(job_description, resume_text)
 
 
-    # AI Resume Generation
+    # AI Resume
 
-    optimized_resume = generate_resume(
-        job_description,
-        resume_text
-    )
-
- 
-    # Show Result Page
+    latest_resume = generate_resume(job_description, resume_text)
 
     return render_template(
         "result.html",
         analysis=analysis,
-        resume=optimized_resume
+        resume=latest_resume
+    )
+
+
+@app.route("/download-docx")
+def download_docx():
+
+    global latest_resume
+
+    temp = tempfile.NamedTemporaryFile(delete=False, suffix=".docx")
+
+    create_docx(latest_resume, temp.name)
+
+    return send_file(
+        temp.name,
+        as_attachment=True,
+        download_name="AI_Optimized_Resume.docx"
     )
 
 
