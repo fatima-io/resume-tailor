@@ -2,7 +2,6 @@ from openai import OpenAI
 from dotenv import load_dotenv
 import os
 
-# Load .env file
 load_dotenv()
 
 client = OpenAI(
@@ -10,20 +9,27 @@ client = OpenAI(
     api_key=os.getenv("OPENROUTER_API_KEY"),
 )
 
+
 def analyze_resume(job_description, resume):
 
     prompt = f"""
 You are an ATS Resume Expert.
 
-Compare the following resume with the job description.
+Analyze the resume against the job description.
 
-Return your answer in the following format:
+Return ONLY the following sections.
 
 ATS Score:
+(A score out of 100)
+
 Matched Skills:
+(Bullet list)
+
 Missing Skills:
+(Bullet list)
+
 Suggestions:
-Optimized Professional Summary:
+(Numbered list)
 
 Job Description:
 {job_description}
